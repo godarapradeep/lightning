@@ -1,5 +1,5 @@
 ({
-    calculateBMIVal : function(component, event, helper) {
+    calculateBMI : function(component, event, helper) {
 
         var heightVal = component.get("v.height");
         var weightVal = component.get("v.weight");
@@ -14,6 +14,28 @@
            $A.util.addClass(displayBox, 'is-risk');
            $A.util.removeClass(displayBox, 'no-risk'); 
         }
+
+        var saveBMIMethod = component.get('c.saveBMI');
+        saveBMIMethod.setParams({
+            height : heightVal,
+            weight : weightVal,
+            bmi : bmiVal
+        });
+        saveBMIMethod.setCallback(this, function(response){
+            if(response.getState() === 'SUCCESS') {
+                var showMessageEvent = component.getEvent("showMessage");
+                showMessageEvent.setParams({
+                    message : "Record saved"
+                });
+                showMessageEvent.fire();
+                var applicationEvent = $A.get("e.c:BMIApplicationEvent");
+                applicationEvent.setParams({
+                    type : "BMIForm:recordSaved"
+                });
+                applicationEvent.fire();
+            }
+        });
+        $A.enqueueAction(saveBMIMethod);
     }
 
 })

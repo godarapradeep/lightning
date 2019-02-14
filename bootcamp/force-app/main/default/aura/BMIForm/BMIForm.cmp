@@ -1,10 +1,12 @@
-<aura:component>
+<aura:component controller="BMIController">
 	<aura:attribute name="height" type="Decimal" />
 	<aura:attribute name="weight" type="Decimal" />
 
     <aura:attribute name="bmi" type="Decimal" />  
        
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <aura:registerEvent name="showMessage" type="c:BMIComponentEvent"/>
 
     <div class="bmi-wrapper">
         <div class="slds-form slds-form_stacked">
@@ -25,7 +27,7 @@
         </div>
         </div>
         
-        <aura:if isTrue="{! !empty(v.bmi)}">
+        <aura:if isTrue="{!v.bmi}">
             <div aura:id="display" class="bmi-message">
                 Your BMI is <b>{!v.bmi}</b>
             </div>

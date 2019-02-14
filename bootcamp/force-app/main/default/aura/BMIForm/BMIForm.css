@@ -1,10 +1,9 @@
 .THIS.bmi-wrapper {
     background: rgb(216, 237, 255);
     padding: 10px;
-    border: 1px solid grey;
     border-radius: 5px;
     width: 600px;
-    margin: 0 auto;
+    margin: 20px auto;
 }
 .THIS .bmi-message {
     margin: 10px;
