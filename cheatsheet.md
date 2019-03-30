@@ -3,6 +3,7 @@
 A quick reference to common SFDX commands:
 ===
 Org Management:
+```
   force:alias:list                   # list username aliases for sfdx
   force:alias:set                    # set username aliases for sfdx
   force:apex:class:create            # create an apex class
@@ -11,6 +12,7 @@ Org Management:
   force:apex:log:list                # list debug logs
   force:apex:test:report             # display test results
   force:apex:test:run                # invoke apex tests
+```
 Org Management:
   force:auth:jwt:grant               # authorize an org using the jwt flow
   force:auth:sfdxurl:store           # authorize an org using an sfdx auth url
